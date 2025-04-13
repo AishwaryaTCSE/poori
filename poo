@@ -1,15 +1,26 @@
 
+
+let result = [];
+
 function flattenArray(arr) {
-  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr[i];
 
-  arr.forEach(item => {
     if (Array.isArray(item)) {
-      result = result.concat(flattenArray(item)); // recursive call
-    } else {
+      flattenArray(item); // Recursive call
+    } else if (typeof item !== 'undefined') {
       result.push(item);
+    } else {
+     
     }
-  });
-
-  console.log(result)
+  }
 }
 
+// Input array
+const input = [1, [2, [3, 4], 5], 6, [7, 8]];
+
+// Call the flatten function
+flattenArray(input);
+
+// Print result
+console.log("Flattened Array:", result);
